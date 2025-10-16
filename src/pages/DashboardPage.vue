@@ -37,6 +37,7 @@
                     label="ASSIGN"
                     v-if="this.selected.length > 0"
                     color="secondary"
+                    size="11px"
                     text-color="accent"
                     icon="fa fa-user-plus"
                     @click="openClientDialog()"
@@ -845,8 +846,7 @@ export default defineComponent({
       await this.helperStore.initStores()
       if (this.candidateStore.candidateStatus.length > 0) {
         this.tab = this.candidateStore.candidateStatus[0].code
-
-        if (this.candidateStore.clients.length > 0) {
+        if (this.candidateStore.clients.length === 0) {
           await this.candidateStore.getClients({
             company_name: 'concentrix',
           })
