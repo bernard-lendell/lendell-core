@@ -1,0 +1,13 @@
+{
+  "name": "uerm-patient-path",
+  "version": "0.0.1",
+  "description": "A UERM Queuing System",
+  "author": "Bernard Gresola - Lendell Git <bernard.gresola@lendell.ph>",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/app": "^7.0.0",
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  }
+}

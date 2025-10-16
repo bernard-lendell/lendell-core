@@ -1,6 +1,6 @@
-# UERMQueue (queuing-system)
+# UERM Patient Path (uerm-patient-path)
 
-A Quasar Project
+A UERM Queuing System
 
 ## Install the dependencies
 ```bash
