@@ -57,7 +57,7 @@ export default defineConfig((/* ctx */) => {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      publicPath: '/lendell-core',
+      // publicPath: '/lendell-core',
       // analyze: true,
       // env: {},
       // rawDefine: {}
