@@ -978,8 +978,8 @@ export default defineComponent({
                 list.client_id = this.endorsementDetails.client_id
                 list.site_id = this.endorsementDetails.site_id
                 list.team_id = this.endorsementDetails.team_id
-                ;(list.supervisor_id = filterSupervisor[0].supervisor_id),
-                  (list.user_supervisor_id = 'LENDELL CORE USER')
+                list.supervisor_id = filterSupervisor[0].supervisor_id
+                list.user_supervisor_id = filterSupervisor[0].user_id
               }
 
               payload = this.selected
