@@ -406,6 +406,15 @@
               </div>
             </div>
           </q-card-section>
+
+          <q-card-section
+            v-if="this.bools.assignmentLoading"
+            style="height: 15vh !important"
+          ></q-card-section>
+          <q-inner-loading :showing="this.bools.assignmentLoading">
+            <q-spinner-puff size="100px" color="primary" />
+            <span class="q-pt-md text-overline text-uppercase">Loading, please wait ...</span>
+          </q-inner-loading>
           <q-card-section align="right" class="bg-green" v-if="this.selected.length > 0">
             <q-btn
               type="submit"
@@ -414,6 +423,7 @@
               text-color="accent"
               icon="fa fa-check"
               size="11px"
+              :disable="this.bools.assignmentLoading"
             >
             </q-btn>
           </q-card-section>
@@ -699,6 +709,7 @@ export default defineComponent({
         applicationDialogLoading: false,
         endorsementsDialog: false,
         endorsmentsLoading: false,
+        assignmentLoading: false,
       },
       batchId: '',
       applicationId: '',
@@ -955,6 +966,7 @@ export default defineComponent({
         })
         .onOk(async () => {
           this.bools.loading = true
+          this.bools.assignmentLoading = true
           let payload = {}
 
           if (filterClients.length > 0) {
@@ -995,11 +1007,12 @@ export default defineComponent({
           await this.helperStore.setNotification(notifInitPayload)
 
           await this.initStores()
+          this.bools.clientDialog = false
           await this.fetchData(this.batchId, this.tab)
 
-          this.bools.clientDialog = false
           await this.closeSearchDialog()
           this.bools.loading = false
+          this.bools.assignmentLoading = false
           // if (response.status === 'success') {
           //   // await this.fetchApi(this.tab)
           //   this.bools.loading = false
