@@ -413,6 +413,7 @@
               color="secondary"
               text-color="accent"
               icon="fa fa-check"
+              size="11px"
             >
             </q-btn>
           </q-card-section>
@@ -554,6 +555,7 @@
                 v-if="Object.keys(this.applicationDetails).length > 0"
                 icon="fa fa-user-plus"
                 type="submit"
+                size="11px"
               >
               </q-btn>
               <q-btn
@@ -561,6 +563,7 @@
                 label="CLOSE"
                 color="red"
                 @click="closeSearchDialog"
+                size="11px"
               ></q-btn>
             </q-btn-group>
           </q-card-section>
