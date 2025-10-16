@@ -991,9 +991,10 @@ export default defineComponent({
 
           await this.helperStore.setNotification(notifInitPayload)
 
-          this.bools.clientDialog = false
           await this.initStores()
+          await this.fetchData(this.batchId, this.tab)
 
+          this.bools.clientDialog = false
           await this.closeSearchDialog()
           this.bools.loading = false
           // if (response.status === 'success') {
