@@ -14,6 +14,11 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [{ name: 'Dashboard', path: '', component: () => import('pages/DashboardPage.vue') }],
   },
+  {
+    path: '/test-upload',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ name: 'TestUpload', path: '', component: () => import('pages/TestUpload.vue') }],
+  },
 
   // Always leave this as last one,
   // but you can also remove it

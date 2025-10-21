@@ -979,7 +979,7 @@ export default defineComponent({
                 list.site_id = this.endorsementDetails.site_id
                 list.team_id = this.endorsementDetails.team_id
                 list.supervisor_id = filterSupervisor[0].supervisor_id
-                list.user_supervisor_id = filterSupervisor[0].user_id
+                list.user_supervisor_id = 'LOSIS-000017'
               }
 
               payload = this.selected

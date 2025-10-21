@@ -112,8 +112,8 @@ export const useCandidateStore = defineStore('candidate', {
               list.fullname = `${list.lname}, ${list.fname} ${list.lname}`
               list.fullname = list.fullname.toUpperCase()
             }
-            const hashMap = utils.buildHashTable(response.data, 'client_id')
-            const optionData = utils.buildOptionsArray(response.data, 'fullname', 'client_id')
+            const hashMap = utils.buildHashTable(response.data, 'user_id')
+            const optionData = utils.buildOptionsArray(response.data, 'fullname', 'user_id')
             this.clients = response.data
             this.clientsOptions = optionData
             this.clientsHashMap = hashMap
@@ -178,6 +178,19 @@ export const useCandidateStore = defineStore('candidate', {
         url: `${this.helper.apiHost}/losis/candidates/endorsement`,
         method: 'post',
         detailed: true,
+        data: payload,
+        handler: () => {},
+      })
+    },
+
+    async testUpload(payload) {
+      return await this.helper.request({
+        url: `${this.helper.apiHost}/losis/candidates/test-upload-report`,
+        method: 'post',
+        detailed: true,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
         data: payload,
         handler: () => {},
       })
