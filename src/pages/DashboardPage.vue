@@ -203,6 +203,7 @@
                   v-model:pagination="this.pagination"
                   :filter="this.filterEndorsements"
                   :loading="this.bools.endorsmentsLoading"
+                  :rows-per-page-options="[0]"
                 >
                   <template v-slot:top-right>
                     <q-input
@@ -269,6 +270,7 @@
                   selection="multiple"
                   v-model:selected="endorsementSelected"
                   :loading="this.bools.endorsmentsLoading"
+                  :rows-per-page-options="[0]"
                 >
                   <template v-slot:top-left>
                     <div v-if="this.endorsementSelected.length > 0">
