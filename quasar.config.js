@@ -36,8 +36,8 @@ export default defineConfig((/* ctx */) => {
         node: 'node20',
       },
       env: {
-        API_HOST: 'https://tricky-singers-count.loca.lt/api',
-        NGROK_HOST: 'https://tricky-singers-count.loca.lt/api',
+        API_HOST: 'https://wet-spiders-lead.loca.lt/api',
+        NGROK_HOST: 'https://wet-spiders-lead.loca.lt/api',
         // DEV_HOST: "https://api.uerm.edu.ph/dragonpay", // AT HOME
         // DEV_HOST: " https://b84c-202-57-35-84.ngrok-free.app/dragonpay", //NGROK
         // DEV_HOST: 'http://20.14.20.235:8080',
