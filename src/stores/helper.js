@@ -125,6 +125,7 @@ export const useHelperStore = defineStore('helper', {
         headers: {
           ...headers,
           ...(process.env.NGROKTESTING && { 'ngrok-skip-browser-warning': true }),
+          ...(process.env.NGROKTESTING && { 'bypass-tunnel-reminder': true }),
         },
       }
 
