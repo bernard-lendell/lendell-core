@@ -36,8 +36,8 @@ export default defineConfig((/* ctx */) => {
         node: 'node20',
       },
       env: {
-        API_HOST: 'https://7zlyqd-ip-124-106-232-133.tunnelmole.net/api',
-        NGROK_HOST: 'https://7zlyqd-ip-124-106-232-133.tunnelmole.net/api',
+        API_HOST: 'https://c7c422bc58d2.ngrok-free.app/api',
+        NGROK_HOST: 'https://c7c422bc58d2.ngrok-free.app/api',
         // DEV_HOST: "https://api.uerm.edu.ph/dragonpay", // AT HOME
         // DEV_HOST: " https://b84c-202-57-35-84.ngrok-free.app/dragonpay", //NGROK
         // DEV_HOST: 'http://20.14.20.235:8080',
