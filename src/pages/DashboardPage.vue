@@ -47,94 +47,144 @@
             </q-input>
           </q-card-section>
           <q-card-section class="q-pa-none">
-            <q-separator color="secondary"></q-separator>
-            <q-tabs
-              v-model="this.tab"
-              dense
-              active-class="bg-primary text-white"
-              indicator-color="secondary"
-              align="justify"
-            >
-              <q-tab
-                v-for="status in this.candidateStore.candidateStatus"
-                :key="status"
-                :name="status.code"
-                :label="status.name.toUpperCase()"
-                :disable="this.bools.loading"
-              >
-              </q-tab>
-            </q-tabs>
-            <q-separator color="bg-dark"></q-separator>
-
-            <q-tab-panels v-model="this.tab" animated>
-              <q-tab-panel
-                v-for="status in this.candidateStore.candidateStatus"
-                :key="status"
-                :name="status.code"
-                class="q-pa-none"
-                style="max-height: 70vh !important"
-              >
-                <!--
-                  :columns="this.columns" -->
-                <q-table
-                  class="scroll sticky-header-table"
-                  :rows="this.candidateList"
-                  :columns="this.columns"
-                  virtual-scroll
-                  row-key="external_client_id"
-                  v-model:pagination="this.pagination"
-                  :filter="this.filter"
-                  selection="multiple"
-                  v-model:selected="selected"
-                  :loading="this.bools.loading"
+            <div class="row q-col-x-gutter-sm">
+              <div class="col-3">
+                <!-- <q-tabs
+                  v-model="this.tab"
+                  dense
+                  vertical
+                  active-class="bg-primary text-white"
+                  indicator-color="secondary"
+                  align="justify"
                 >
-                  <template v-slot:top-right>
-                    <q-input
-                      outlined
-                      dense
-                      debounce="300"
-                      input-class="text-green text-bold"
-                      v-model="this.filter"
-                      square
-                      placeholder="Filter"
-                      color="green"
-                      stack-label
-                      class="full-width q-pl-md"
-                      filled
-                    >
-                      <template v-slot:append>
-                        <q-icon name="search" color="green" />
-                      </template>
-                    </q-input>
-                  </template>
+                  <q-tab
+                    v-for="status in this.candidateStore.candidateStatus"
+                    :key="status"
+                    :name="status.code"
+                    :label="status.name.toUpperCase()"
+                    :disable="this.bools.loading"
+                  >
+                  </q-tab>
 
-                  <template v-slot:body="props">
-                    <q-tr :props="props" class="cursor-pointer">
-                      <q-td auto-width>
-                        <q-checkbox keep-color v-model="props.selected" color="green" />
-                      </q-td>
-                      <q-td v-for="col in props.cols" :key="col.name" :props="props">
-                        <div v-if="col.name === 'hasFiles'">
-                          <div v-if="col.value === 'YES'">
-                            <q-btn
-                              label="FILES"
-                              @click="getFiles(props.row)"
-                              icon="fa fa-file"
-                              size="sm"
+                </q-tabs> -->
+                <q-card class="shadow-0" borderless>
+                  <q-card-section class="q-pa-sm">
+                    <q-scroll-area
+                      style="height: 68vh !important"
+                      visible
+                      :content-active-style="{ paddingRight: '12px' }"
+                    >
+                      <q-list
+                        bordered
+                        separator
+                        dense
+                        class="rounded-borders bg-primary scroll fit"
+                      >
+                        <q-item
+                          v-for="status in this.candidateStore.candidateStatus"
+                          :key="status"
+                          v-ripple
+                          clickable
+                          class="text-white"
+                          active-class="bg-secondary"
+                          @click="this.tab = status.code"
+                          :active="this.tab === status.code"
+                          :disable="this.bools.loading"
+                        >
+                          <q-item-section>
+                            <q-item-label
+                              header
+                              caption
+                              :class="this.tab === status.code ? 'text-black' : 'text-white'"
+                              class="text-white text-uppercase text-overline text-weight-bold"
+                            >
+                              {{ status.name }}
+                            </q-item-label>
+                          </q-item-section>
+                        </q-item>
+                      </q-list>
+                    </q-scroll-area>
+                  </q-card-section>
+                </q-card>
+              </div>
+
+              <div class="col">
+                <q-card class="fit shadow-0" borderless>
+                  <q-card-section class="fit q-pa-sm">
+                    <q-tab-panels v-model="this.tab" animated>
+                      <q-tab-panel
+                        v-for="status in this.candidateStore.candidateStatus"
+                        :key="status"
+                        :name="status.code"
+                        class="q-pa-none"
+                        style="max-height: 80vh !important"
+                      >
+                        <q-table
+                          bordered
+                          class="scroll sticky-header-table"
+                          :rows="this.candidateList"
+                          :columns="this.columns"
+                          virtual-scroll
+                          row-key="external_client_id"
+                          v-model:pagination="this.pagination"
+                          :filter="this.filter"
+                          selection="multiple"
+                          v-model:selected="selected"
+                          :loading="this.bools.loading"
+                        >
+                          <template v-slot:top-right>
+                            <q-input
+                              outlined
+                              dense
+                              debounce="300"
+                              input-class="text-green text-bold"
+                              v-model="this.filter"
+                              square
+                              placeholder="Filter"
                               color="green"
-                            ></q-btn>
-                          </div>
-                          <div v-else>{{ col.value }}</div>
-                        </div>
-                        <div v-else>
-                          {{ col.value }}
-                        </div>
-                      </q-td>
-                    </q-tr>
-                  </template>
-                </q-table>
-              </q-tab-panel>
-            </q-tab-panels>
+                              stack-label
+                              class="full-width q-pl-md"
+                              filled
+                            >
+                              <template v-slot:append>
+                                <q-icon name="search" color="green" />
+                              </template>
+                            </q-input>
+                          </template>
+
+                          <template v-slot:body="props">
+                            <q-tr :props="props" class="cursor-pointer">
+                              <q-td auto-width>
+                                <q-checkbox keep-color v-model="props.selected" color="green" />
+                              </q-td>
+                              <q-td v-for="col in props.cols" :key="col.name" :props="props">
+                                <div v-if="col.name === 'hasFiles'">
+                                  <div v-if="col.value === 'YES'">
+                                    <q-btn
+                                      label="FILES"
+                                      @click="getFiles(props.row)"
+                                      icon="fa fa-file"
+                                      size="sm"
+                                      color="green"
+                                    ></q-btn>
+                                  </div>
+                                  <div v-else>{{ col.value }}</div>
+                                </div>
+                                <div v-else>
+                                  {{ col.value }}
+                                </div>
+                              </q-td>
+                            </q-tr>
+                          </template>
+                        </q-table>
+                      </q-tab-panel>
+                    </q-tab-panels>
+                  </q-card-section>
+                </q-card>
+              </div>
+            </div>
+
+            <!-- <q-separator color="bg-dark"></q-separator> -->
           </q-card-section>
         </q-card>
       </div>
