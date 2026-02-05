@@ -15,6 +15,11 @@ const routes = [
     children: [{ name: 'Dashboard', path: '', component: () => import('pages/DashboardPage.vue') }],
   },
   {
+    path: '/tracker',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ name: 'Tracker', path: '', component: () => import('pages/TrackerPage.vue') }],
+  },
+  {
     path: '/test-upload',
     component: () => import('layouts/MainLayout.vue'),
     children: [{ name: 'TestUpload', path: '', component: () => import('pages/TestUpload.vue') }],
